@@ -1,0 +1,10 @@
+<?php
+$dsn = "mysql:dbname=belajar_php;host=localhost";
+$user = "root"; //Sesuaikan dengan nama user database
+$pass = ""; //Sesuaikan dengan nama password database
+try {
+$dbh = new PDO($dsn, $user, $pass);
+} catch (PDOException $e) {
+echo "Koneksi ke database gagal: ".$e->getMessage();
+}
+?>
