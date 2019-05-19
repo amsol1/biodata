@@ -1,5 +1,5 @@
 <?php
-    $serverName = "dicodingwebappamsolserver.database.windows.net"; // update me
+    $serverName = "tcp:dicodingwebappamsolserver.database.windows.net"; // update me
     $connectionOptions = array(
         "Database" => "dicodingamsoldb", // update me
         "Uid" => "dicoding", // update me
