@@ -40,6 +40,6 @@ diinput?')">
 </p>
 </form>
 </fieldset>
-<center><a href="index.html"> << Tabel Biodata</a></center>
+<center><a href="index.php"> << Tabel Biodata</a></center>
     </body>
 </html>
