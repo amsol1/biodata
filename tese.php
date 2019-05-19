@@ -1,7 +1,7 @@
 
 <?php
     $host = "tcp:dicodingwebappamsolserver.database.windows.net";
-    $user = "<Nama admin database Anda>";
+    $user = "dicoding";
     $pass = "rakan@ra19";
     $db = "dicodingamsoldb";
     try {
