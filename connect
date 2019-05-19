@@ -1,10 +1,9 @@
-<?php
-$dsn = "mysql:dbname=belajar_php;host=localhost";
-$user = "root"; //Sesuaikan dengan nama user database
-$pass = ""; //Sesuaikan dengan nama password database
+// PHP Data Objects(PDO) Sample Code:
 try {
-$dbh = new PDO($dsn, $user, $pass);
-} catch (PDOException $e) {
-echo "Koneksi ke database gagal: ".$e->getMessage();
+    $conn = new PDO("sqlsrv:server = tcp:dicodingwebappamsolserver.database.windows.net,1433; Database = dicodingamsoldb", "dicoding", "{rakan@ra19}");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
-?>
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
