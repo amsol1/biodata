@@ -1,23 +1,57 @@
 
-   <?php
-
+<html>  
+<head>  
+<Title>Azure SQL Database - PHP Website</Title>  
+</head>  
+<body>  
+<form method="post" action="?action=add" enctype="multipart/form-data" >  
+Emp Id <input type="text" name="t_emp_id" id="t_emp_id"/></br>  
+Name <input type="text" name="t_name" id="t_name"/></br>  
+Education <input type="text" name="t_education" id="t_education"/></br>  
+E-mail address <input type="text" name="t_email" id="t_email"/></br>  
+<input type="submit" name="submit" value="Submit" />  
+</form>  
+<?php  
+/*Connect using SQL Server authentication.*/  
+$serverName = "tcp:dicodingwebappamsolserver.database.windows.net,1433";  
+$connectionOptions = array(  
+    "Database" => "dicodingamsoldb",  
+    "UID" => "dicoding",  
+    "PWD" => "rakan@ra19"  
+);  
+$conn = sqlsrv_connect($serverName, $connectionOptions);  
   
-try {    
-    $hostname = 'dicodingwebappamsolserver.database.windows.net';
-    $dbname = 'dicodingamsoldb';
-    $username = 'dicoding';
-    $pwd = 'rakan@ra19';
+if ($conn === false)  
+    {  
+    die(print_r(sqlsrv_errors() , true));  
+    }  
+  
+
+/*Display registered people.*/  
+$sql = "SELECT * FROM biodata ORDER BY id"; 
+$stmt = sqlsrv_query($conn, $sql); 
+if($stmt === false) 
+{ 
+die(print_r(sqlsrv_errors(), true)); 
+} 
  
-    $pdo = new PDO ("dblib:version=8.0;charset=UTF-8;host={$hostname};dbname={$dbname}", $username, $pwd);
-    $query = "SELECT * FROM biodata";
-    $statement = $pdo->prepare($query);
-    $statement->execute();
-    
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($results);
+if(sqlsrv_has_rows($stmt)) 
+{ 
+print("<table border='1px'>"); 
+print("<tr><td>Id</td>"); 
+print("<td>Nama</td>"); 
+
  
-} catch (PDOException $e) {
-    echo "Failed to get DB handle: " . $e->getMessage() . "\n";
-    exit;
+while($row = sqlsrv_fetch_array($stmt)) 
+{ 
+ 
+print("<tr><td>".$row['id']."</td>"); 
+print("<td>".$row['nama']."</td>"); 
+
+} 
+ 
+print("</table>"); 
 }
-?>
+?>  
+</body>  
+</html>  
