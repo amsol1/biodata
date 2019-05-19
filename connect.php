@@ -3,7 +3,7 @@
 
 // SQL Server Extension Sample Code:
 
-    $host = "tcp:dicodingwebappamsolserver.database.windows.net,1433";
+    $host = "tcp:dicodingwebappamsolserver.database.windows.net";
     $user = "dicoding";
     $pass = "rakan@ra19";
     $db = "dicodingamsoldb";
